@@ -1,0 +1,111 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-26T16:35:29.255Z",
+    "end": "2022-06-26T16:37:43.659Z",
+    "duration": 134404,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "90b3d691-ce52-41d2-b1b1-5ff0fc9814ec",
+      "title": "",
+      "fullFile": "cypress/integration/specs/Google-search.spec.js",
+      "file": "cypress/integration/specs/Google-search.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1e4ec1fe-104d-418d-ba97-2b99f40c4d7e",
+          "title": "example to-do app",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Navigates to google search and search for a car and then get search number from result page",
+              "fullTitle": "example to-do app Navigates to google search and search for a car and then get search number from result page",
+              "timedOut": null,
+              "duration": 127418,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "[\n  \"Search number for BMW is 997,000,000\",\n  \"Search number for Mercedes is 997,000,000\",\n  \"Search number for Audi is 1,080,000,000\"\n]",
+              "code": "let cars = [];\ncars.push('BMW');\ncars.push('Mercedes');\ncars.push('Audi');\nfor (let i = 0; i < cars.length; i++) {\n  cy.visit('https://www.google.com');\n  cy.xpath('//*[@name=\"q\"]', {\n    timeout: 7000\n  }).type(cars[i]);\n  cy.xpath('//*[@name=\"q\"]', {\n    timeout: 7000\n  }).type(\"{enter}\");\n  cy.xpath('//div[@id=\"result-stats\"]').then($searchResult => {\n    const text = $searchResult.text(); //cy.addContext(\"Search result is \" + text);\n    //cy.log(\"Search result is \" + text);\n    const arrayResult = text.split(' ');\n    cy.log(\"Search number for \" + cars[i] + \" is \" + arrayResult[1]);\n    cy.addContext(\"Search number for \" + cars[i] + \" is \" + arrayResult[1]);\n  }); //end of then\n} //end of loop",
+              "err": {},
+              "uuid": "10f414b2-60dd-4551-82b5-5e1a2048cc02",
+              "parentUUID": "1e4ec1fe-104d-418d-ba97-2b99f40c4d7e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "10f414b2-60dd-4551-82b5-5e1a2048cc02"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 127418,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "reportDir": "cypress/report/mochawesome-report",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "pageLoadTimeout": 12000,
+        "trashAssetsBeforeRuns": true,
+        "defaultCommandTimeout": 20000
+      },
+      "version": "6.0.1"
+    }
+  }
+}
